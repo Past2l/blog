@@ -25,6 +25,7 @@ jobs:
           echo "REPO=${REPO,,}" >> $GITHUB_OUTPUT
           echo "REPO_NAME=${REPO_NAME,,}" >> $GITHUB_OUTPUT
           echo "GHCR_REPO=ghcr.io/${OWNER,,}/${REPO_NAME,,}" >> $GITHUB_OUTPUT
+          echo "${{ secrets.ENV }}" >> $GITHUB_OUTPUT
       - uses: actions/checkout@v2
       - name: Set up docker buildx
         id: buildx
@@ -49,6 +50,8 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ steps.env.outputs.GHCR_REPO }}:latest
+          build-args: |
+            DATABASE_URL=${{ steps.env.outputs.DATABASE_URL }}
   deploy:
     needs: build
     name: Deploy

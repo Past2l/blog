@@ -1,5 +1,8 @@
 FROM node:20-alpine AS base
 
+ARG DATABASE_URL
+ENV DATABASE_URL=${DATABASE_URL}
+
 # Install pnpm
 RUN npm install -g pnpm
 
