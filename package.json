@@ -7,7 +7,8 @@
     "start": "next start",
     "lint": "next lint",
     "generate": "drizzle-kit generate:pg",
-    "migrate": "drizzle-kit push:pg"
+    "migrate": "drizzle-kit push:pg",
+    "studio": "drizzle-kit studio"
   },
   "dependencies": {
     "dotenv": "^16.4.5",
