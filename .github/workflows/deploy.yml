@@ -50,8 +50,7 @@ jobs:
           builder: ${{ steps.buildx.outputs.name }}
           push: true
           tags: ${{ steps.env.outputs.GHCR_REPO }}:latest
-          build-args: |
-            DATABASE_URL=${{ steps.env.outputs.DATABASE_URL }}
+          build-args: ${{ secrets.ENV }}
   deploy:
     needs: build
     name: Deploy

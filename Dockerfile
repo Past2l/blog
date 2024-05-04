@@ -1,7 +1,11 @@
 FROM node:20-alpine AS base
 
-ARG DATABASE_URL
-ENV DATABASE_URL=${DATABASE_URL}
+ARG DATABASE_URL \
+	GOOGLE_CLIENT_ID \
+	GOOGLE_CLIENT_SECRET
+ENV DATABASE_URL=${DATABASE_URL} \
+	GOOGLE_CLIENT_ID=${GOOGLE_CLIENT_ID} \
+	GOOGLE_CLIENT_SECRET=${GOOGLE_CLIENT_SECRET}
 
 # Install pnpm
 RUN npm install -g pnpm
@@ -12,6 +16,7 @@ WORKDIR /app
 COPY . .
 RUN pnpm install
 RUN pnpm run build
+RUN pnpm run migrate
 
 # Run
 FROM base AS deploy
