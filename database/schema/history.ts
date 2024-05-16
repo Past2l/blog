@@ -32,7 +32,7 @@ export const historyAction = pgEnum('history_action', [
 
 export const history = pgTable('history', {
   id: uuid('id').primaryKey().defaultRandom(),
-  date: timestamp('date').defaultNow().notNull(),
+  date: timestamp('date').notNull(),
   ip: text('ip').notNull(),
   device_id: uuid('device_id').notNull(),
   os: historyOSEnum('os').notNull(),

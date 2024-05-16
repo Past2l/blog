@@ -47,7 +47,10 @@ export class PostService {
           columns: { post_id: false },
         },
         postToTag: { columns: {}, with: { tag: true } },
-        comment: { where: eq(comment.deleted, false), columns: { deleted: false } },
+        comment: {
+          where: eq(comment.deleted, false),
+          columns: { deleted: false },
+        },
       },
     });
     return (
@@ -64,7 +67,7 @@ export class PostService {
     const id = (
       await db
         .insert(post)
-        .values({ user_id, title, desc })
+        .values({ user_id, title, desc, created: new Date(), updated: new Date() })
         .returning({ id: post.id })
     )[0].id;
     for (let i = 0; i < content.length; i++)

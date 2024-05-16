@@ -62,6 +62,8 @@ export class CommentService {
         .insert(comment)
         .values({
           ...(await CommentValidate.parseAsync({ ...data, post_id, user_id })),
+          created: new Date(),
+          updated: new Date(),
         })
         .returning({ id: comment.id })
     )[0].id;

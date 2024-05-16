@@ -1,5 +1,5 @@
 {
-  "id": "91e47e70-8207-486c-9aab-3d92099fb296",
+  "id": "40ac1461-5a6e-4d03-b1ef-d6cb9b69398b",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -44,15 +44,13 @@
           "name": "created",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         },
         "updated": {
           "name": "updated",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -102,8 +100,7 @@
           "name": "date",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         },
         "ip": {
           "name": "ip",
@@ -238,15 +235,13 @@
           "name": "created",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         },
         "updated": {
           "name": "updated",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},
@@ -419,8 +414,7 @@
           "name": "created",
           "type": "timestamp",
           "primaryKey": false,
-          "notNull": true,
-          "default": "now()"
+          "notNull": true
         }
       },
       "indexes": {},

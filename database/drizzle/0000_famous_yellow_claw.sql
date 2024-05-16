@@ -22,13 +22,13 @@ CREATE TABLE IF NOT EXISTS "comment" (
 	"post_id" integer NOT NULL,
 	"content" text NOT NULL,
 	"deleted" boolean DEFAULT false NOT NULL,
-	"created" timestamp DEFAULT now() NOT NULL,
-	"updated" timestamp DEFAULT now() NOT NULL
+	"created" timestamp NOT NULL,
+	"updated" timestamp NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "history" (
 	"id" uuid PRIMARY KEY DEFAULT gen_random_uuid() NOT NULL,
-	"date" timestamp DEFAULT now() NOT NULL,
+	"date" timestamp NOT NULL,
 	"ip" text NOT NULL,
 	"device_id" uuid NOT NULL,
 	"os" "history_os" NOT NULL,
@@ -45,8 +45,8 @@ CREATE TABLE IF NOT EXISTS "post" (
 	"title" text NOT NULL,
 	"desc" text NOT NULL,
 	"deleted" boolean DEFAULT false NOT NULL,
-	"created" timestamp DEFAULT now() NOT NULL,
-	"updated" timestamp DEFAULT now() NOT NULL
+	"created" timestamp NOT NULL,
+	"updated" timestamp NOT NULL
 );
 --> statement-breakpoint
 CREATE TABLE IF NOT EXISTS "post_content" (
@@ -69,7 +69,7 @@ CREATE TABLE IF NOT EXISTS "user" (
 	"name" text NOT NULL,
 	"email" text NOT NULL,
 	"picture" text NOT NULL,
-	"created" timestamp DEFAULT now() NOT NULL,
+	"created" timestamp NOT NULL,
 	CONSTRAINT "user_email_unique" UNIQUE("email")
 );
 --> statement-breakpoint

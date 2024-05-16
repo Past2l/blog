@@ -43,7 +43,12 @@ export class UserService {
   }
 
   static async create(data: UserDto) {
-    await db.insert(user).values(await UserValidate.parseAsync(data));
+    await db
+      .insert(user)
+      .values({
+        ...(await UserValidate.parseAsync(data)),
+        created: new Date(),
+      });
     return this.get(data.id);
   }
 

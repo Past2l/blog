@@ -22,8 +22,8 @@ export const post = pgTable('post', {
   title: text('title').notNull(),
   desc: text('desc').notNull(),
   deleted: boolean('deleted').default(false).notNull(),
-  created: timestamp('created').defaultNow().notNull(),
-  updated: timestamp('updated').defaultNow().notNull(),
+  created: timestamp('created').notNull(),
+  updated: timestamp('updated').notNull(),
 });
 
 export const postRelations = relations(post, ({ one, many }) => ({

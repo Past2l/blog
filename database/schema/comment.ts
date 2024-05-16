@@ -20,8 +20,8 @@ export const comment = pgTable('comment', {
     .notNull(),
   content: text('content').notNull(),
   deleted: boolean('deleted').default(false).notNull(),
-  created: timestamp('created').defaultNow().notNull(),
-  updated: timestamp('updated').defaultNow().notNull(),
+  created: timestamp('created').notNull(),
+  updated: timestamp('updated').notNull(),
 });
 
 export const commentRelations = relations(comment, ({ one }) => ({

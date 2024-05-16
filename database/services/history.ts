@@ -46,6 +46,7 @@ export class HistoryService {
     to.setHours(23, 59, 59, 999);
     await db.insert(history).values({
       ...(await HistoryValidate.parseAsync(data)),
+      date: new Date(),
       todayFirstSeen:
         data.action == 'VIEW_POST'
           ? !(await db.query.history.findFirst({
