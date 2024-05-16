@@ -5,7 +5,7 @@ export class Google {
   static getLoginURL(req: NextRequest) {
     return `https://accounts.google.com/o/oauth2/v2/auth?${new URLSearchParams({
       client_id: process.env.GOOGLE_CLIENT_ID || '',
-      redirect_uri: `${req.url.split('/').slice(0, 3).join('/')}/api/auth/callback`,
+      redirect_uri: `${req.headers.get('x-forwarded-proto')}://${req.headers.get('host')}/api/auth/callback`,
       scope: 'profile email',
       access_type: 'offline',
       include_granted_scopes: 'true',
@@ -21,7 +21,7 @@ export class Google {
         code: req.nextUrl.searchParams.get('code') || '',
         client_id: process.env.GOOGLE_CLIENT_ID || '',
         client_secret: process.env.GOOGLE_CLIENT_SECRET || '',
-        redirect_uri: `${req.url.split('/').slice(0, 3).join('/')}/api/auth/callback`,
+        redirect_uri: `${req.headers.get('x-forwarded-proto')}://${req.headers.get('host')}/api/auth/callback`,
         grant_type: 'authorization_code',
       }),
     });
