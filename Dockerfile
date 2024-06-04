@@ -16,7 +16,6 @@ WORKDIR /app
 COPY . .
 RUN pnpm install
 RUN pnpm run build
-RUN pnpm run migrate
 
 # Run
 FROM base AS deploy
