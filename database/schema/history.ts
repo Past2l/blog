@@ -5,37 +5,16 @@ import {
   timestamp,
   integer,
   text,
-  pgEnum,
   boolean,
 } from 'drizzle-orm/pg-core';
-import { comment, post, user } from '.';
-
-export const historyOSEnum = pgEnum('history_os', [
-  'Android',
-  'iOS',
-  'iPadOS',
-  'macOS',
-  'Windows',
-  'Linux',
-  'Other',
-]);
-
-export const historyAction = pgEnum('history_action', [
-  'ADD_POST',
-  'VIEW_POST',
-  'EDIT_POST',
-  'REMOVE_POST',
-  'ADD_COMMENT',
-  'EDIT_COMMENT',
-  'REMOVE_COMMENT',
-]);
+import { comment, historyAction, OSEnum, post, user } from '.';
 
 export const history = pgTable('history', {
   id: uuid('id').primaryKey().defaultRandom(),
   date: timestamp('date').notNull(),
   ip: text('ip').notNull(),
   device_id: uuid('device_id').notNull(),
-  os: historyOSEnum('os').notNull(),
+  os: OSEnum('os').notNull(),
   user_id: text('user_id').references(() => user.id),
   post_id: integer('post_id')
     .references(() => post.id)

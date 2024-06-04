@@ -2,7 +2,6 @@ import { relations } from 'drizzle-orm';
 import {
   boolean,
   integer,
-  pgEnum,
   pgTable,
   primaryKey,
   serial,
@@ -12,7 +11,7 @@ import {
 } from 'drizzle-orm/pg-core';
 import { tag } from './tag';
 import { comment } from './comment';
-import { user } from '.';
+import { postContentTypeEnum, user } from '.';
 
 export const post = pgTable('post', {
   id: serial('id').primaryKey(),
@@ -35,14 +34,6 @@ export const postRelations = relations(post, ({ one, many }) => ({
   comment: many(comment),
   postToTag: many(postToTag),
 }));
-
-export const postContentTypeEnum = pgEnum('content_type', [
-  'text',
-  'image',
-  'video',
-  'file',
-  'html',
-]);
 
 export const postContent = pgTable('post_content', {
   id: uuid('id').primaryKey().defaultRandom(),

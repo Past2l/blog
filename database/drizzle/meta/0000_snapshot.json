@@ -1,5 +1,5 @@
 {
-  "id": "40ac1461-5a6e-4d03-b1ef-d6cb9b69398b",
+  "id": "ba30c92e-130f-4bf7-8080-97e0b8828fd8",
   "prevId": "00000000-0000-0000-0000-000000000000",
   "version": "5",
   "dialect": "pg",
@@ -116,7 +116,7 @@
         },
         "os": {
           "name": "os",
-          "type": "history_os",
+          "type": "os_list",
           "primaryKey": false,
           "notNull": true
         },
@@ -472,6 +472,18 @@
     }
   },
   "enums": {
+    "os_list": {
+      "name": "os_list",
+      "values": {
+        "Android": "Android",
+        "iOS": "iOS",
+        "iPadOS": "iPadOS",
+        "macOS": "macOS",
+        "Windows": "Windows",
+        "Linux": "Linux",
+        "Other": "Other"
+      }
+    },
     "history_action": {
       "name": "history_action",
       "values": {
@@ -482,18 +494,6 @@
         "ADD_COMMENT": "ADD_COMMENT",
         "EDIT_COMMENT": "EDIT_COMMENT",
         "REMOVE_COMMENT": "REMOVE_COMMENT"
-      }
-    },
-    "history_os": {
-      "name": "history_os",
-      "values": {
-        "Android": "Android",
-        "iOS": "iOS",
-        "iPadOS": "iPadOS",
-        "macOS": "macOS",
-        "Windows": "Windows",
-        "Linux": "Linux",
-        "Other": "Other"
       }
     },
     "content_type": {

@@ -1,11 +1,11 @@
 DO $$ BEGIN
- CREATE TYPE "history_action" AS ENUM('ADD_POST', 'VIEW_POST', 'EDIT_POST', 'REMOVE_POST', 'ADD_COMMENT', 'EDIT_COMMENT', 'REMOVE_COMMENT');
+ CREATE TYPE "os_list" AS ENUM('Android', 'iOS', 'iPadOS', 'macOS', 'Windows', 'Linux', 'Other');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
 --> statement-breakpoint
 DO $$ BEGIN
- CREATE TYPE "history_os" AS ENUM('Android', 'iOS', 'iPadOS', 'macOS', 'Windows', 'Linux', 'Other');
+ CREATE TYPE "history_action" AS ENUM('ADD_POST', 'VIEW_POST', 'EDIT_POST', 'REMOVE_POST', 'ADD_COMMENT', 'EDIT_COMMENT', 'REMOVE_COMMENT');
 EXCEPTION
  WHEN duplicate_object THEN null;
 END $$;
@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS "history" (
 	"date" timestamp NOT NULL,
 	"ip" text NOT NULL,
 	"device_id" uuid NOT NULL,
-	"os" "history_os" NOT NULL,
+	"os" "os_list" NOT NULL,
 	"user_id" text,
 	"post_id" integer NOT NULL,
 	"comment_id" uuid,
